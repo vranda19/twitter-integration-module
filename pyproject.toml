@@ -1,0 +1,23 @@
+[tool.ruff]
+line-length = 110
+target-version = "py312"
+exclude = [".venv", "__pycache__"]
+
+[tool.ruff.lint]
+# WHY THESE RULE GROUPS:
+# E/F   - pyflakes/pycodestyle core correctness rules (PEP8 basics)
+# I     - isort (consistent import ordering)
+# B     - flake8-bugbear (common bug patterns, e.g. mutable default args)
+# ASYNC - flake8-async (catches blocking calls inside async functions —
+#         critical for this module, which is async end-to-end)
+select = ["E", "F", "I", "B", "ASYNC"]
+ignore = [
+    "E501", # line length handled by line-length setting above, not a hard error
+]
+
+[tool.mypy]
+python_version = "3.12"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+ignore_missing_imports = true
